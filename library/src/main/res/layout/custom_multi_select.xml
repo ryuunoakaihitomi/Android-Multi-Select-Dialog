@@ -16,7 +16,7 @@
         android:textColor="@color/black"
         android:textSize="@dimen/font_size_heading" />
 
-    <android.support.v7.widget.SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:background="?android:attr/selectableItemBackground"
         android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatCheckBox
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/select_all_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
