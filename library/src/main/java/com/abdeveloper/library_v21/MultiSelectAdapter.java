@@ -18,13 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-class MutliSelectAdapter extends RecyclerView.Adapter<MutliSelectAdapter.MultiSelectDialogViewHolder> {
+class MultiSelectAdapter extends RecyclerView.Adapter<MultiSelectAdapter.MultiSelectDialogViewHolder> {
 
     private ArrayList<MultiSelectModel> mDataSet = new ArrayList<>();
     private String mSearchQuery = "";
     private Context mContext;
 
-    MutliSelectAdapter(ArrayList<MultiSelectModel> dataSet, Context context) {
+    MultiSelectAdapter(ArrayList<MultiSelectModel> dataSet, Context context) {
         this.mDataSet = dataSet;
         this.mContext = context;
     }
@@ -152,10 +152,10 @@ class MutliSelectAdapter extends RecyclerView.Adapter<MutliSelectAdapter.MultiSe
         return mDataSet.size();
     }
 
-    void setData(ArrayList<MultiSelectModel> data, String query, MutliSelectAdapter mutliSelectAdapter) {
+    void setData(ArrayList<MultiSelectModel> data, String query, MultiSelectAdapter multiSelectAdapter) {
         this.mDataSet = data;
         this.mSearchQuery = query;
-        mutliSelectAdapter.notifyDataSetChanged();
+        multiSelectAdapter.notifyDataSetChanged();
     }
 
     class MultiSelectDialogViewHolder extends RecyclerView.ViewHolder {

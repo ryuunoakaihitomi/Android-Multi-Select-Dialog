@@ -70,21 +70,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .titleSize(25)
                 .positiveText("Done")
                 .negativeText("Cancel")
+                .neutralText("Select All/Clear")
                 .setMinSelectionLimit(0)
                 .setMaxSelectionLimit(listOfCountries.size())
                 .preSelectIDsList(alreadySelectedCountries) //List of ids that you need to be selected
                 .multiSelectList(listOfCountries) // the multi select model list with ids and name
                 .onSubmit(new MultiSelectDialog.SubmitCallbackListener() {
                     @Override
-                    public void onSelected(ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String dataString) {
+                    public void onSelected(ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String commonSeparatedData) {
                         //will return list of selected IDS
                         for (int i = 0; i < selectedIds.size(); i++) {
                             Toast.makeText(MainActivity.this, "Selected Ids : " + selectedIds.get(i) + "\n" +
                                     "Selected Names : " + selectedNames.get(i) + "\n" +
-                                    "DataString : " + dataString, Toast.LENGTH_SHORT).show();
+                                    "DataString : " + commonSeparatedData, Toast.LENGTH_SHORT).show();
                         }
 
 
+                    }
+
+                    @Override
+                    public void onNeutral(ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String commonSeparatedData) {
+                        Toast.makeText(MainActivity.this, "U impl it", Toast.LENGTH_SHORT).show();
+                        // Like onSelected(), but just log the result
+                        for (int i = 0; i < selectedIds.size(); i++) {
+                            Log.d(TAG, "onNeutral:  Selected Ids : " + selectedIds.get(i) + "\n" +
+                                    "Selected Names : " + selectedNames.get(i) + "\n" +
+                                    "DataString : " + commonSeparatedData);
+                        }
                     }
 
                     @Override
