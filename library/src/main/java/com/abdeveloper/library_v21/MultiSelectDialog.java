@@ -1,4 +1,4 @@
-package com.abdeveloper.library;
+package com.abdeveloper.library_v21;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -52,7 +52,7 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
                 WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        dialog.setContentView(R.layout.custom_multi_select);
+        dialog.setContentView(R.layout.msd_custom_multi_select);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         RecyclerViewEmptySupport mrecyclerView =  dialog.findViewById(R.id.recycler_view);

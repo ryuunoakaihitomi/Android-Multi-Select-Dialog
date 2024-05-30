@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.abdeveloper.library.MultiSelectDialog;
-import com.abdeveloper.library.MultiSelectModel;
+import com.abdeveloper.library_v21.MultiSelectDialog;
+import com.abdeveloper.library_v21.MultiSelectModel;
 
 import java.util.ArrayList;
 

@@ -73,7 +73,7 @@
 
         <view
             android:id="@+id/recycler_view"
-            class="com.abdeveloper.library.RecyclerViewEmptySupport"
+            class="com.abdeveloper.library_v21.RecyclerViewEmptySupport"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

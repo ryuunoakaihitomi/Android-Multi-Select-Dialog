@@ -1,4 +1,4 @@
-package com.abdeveloper.library;
+package com.abdeveloper.library_v21;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -31,7 +31,7 @@ class MutliSelectAdapter extends RecyclerView.Adapter<MutliSelectAdapter.MultiSe
 
     @Override
     public MultiSelectDialogViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.multi_select_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.msd_multi_select_item, parent, false);
         return new MultiSelectDialogViewHolder(view);
     }
 
