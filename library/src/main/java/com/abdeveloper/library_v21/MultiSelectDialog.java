@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.util.Consumer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
     private ArrayList<MultiSelectModel> tempMainListOfAdapter = new ArrayList<>();
 
     private SubmitCallbackListener submitCallbackListener;
+    private Consumer<Dialog> dialogInterceptor;
 
     private int minSelectionLimit = 1;
     private String minSelectionMessage = null;
@@ -81,7 +83,7 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
         searchView.onActionViewExpanded();
         searchView.clearFocus();
 
-
+        dialogInterceptor.accept(dialog);
         return dialog;
     }
 
@@ -123,22 +125,22 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
             maxSelectionLimit = list.size();
         return this;
     }
-	
+
     public MultiSelectDialog setMaxSelectionLimit(int limit){
         this.maxSelectionLimit = limit;
         return this;
     }
-	
+
 	public MultiSelectDialog setMaxSelectionMessage(String message) {
 		this.maxSelectionMessage = message;
 		return this;
 	}
-	
+
     public MultiSelectDialog setMinSelectionLimit(int limit){
         this.minSelectionLimit = limit;
         return this;
     }
-	
+
 	public MultiSelectDialog setMinSelectionMessage(String message) {
 		this.minSelectionMessage = message;
 		return this;
@@ -146,6 +148,18 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
 
     public MultiSelectDialog onSubmit(@NonNull SubmitCallbackListener callback) {
         this.submitCallbackListener = callback;
+        return this;
+    }
+
+    /**
+     * Used to customize the dialog
+     *
+     * @param consumer The callback contains the {@link Dialog}
+     * @return this {@link MultiSelectDialog}
+     * @see AppCompatDialogFragment#onCreateDialog(Bundle)
+     */
+    public MultiSelectDialog dialogInterceptor(@NonNull Consumer<Dialog> consumer) {
+        this.dialogInterceptor = consumer;
         return this;
     }
 

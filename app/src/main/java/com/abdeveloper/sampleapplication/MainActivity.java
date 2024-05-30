@@ -1,11 +1,13 @@
 package com.abdeveloper.sampleapplication;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String TAG = "Cancel";
+    private static final String TAG = "MainActivity";
 
     Button show_dialog_btn;
 
@@ -75,6 +77,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setMaxSelectionLimit(listOfCountries.size())
                 .preSelectIDsList(alreadySelectedCountries) //List of ids that you need to be selected
                 .multiSelectList(listOfCountries) // the multi select model list with ids and name
+                .dialogInterceptor(dialog -> {
+                    // you can change the size of dialog here
+                    Window w = dialog.getWindow();
+                    WindowManager.LayoutParams lp = w.getAttributes();
+                    DisplayMetrics dm = getResources().getDisplayMetrics();
+                    lp.height = (int) (dm.heightPixels * 0.7);
+                    lp.width = (int) (dm.widthPixels * 0.75);
+                    w.setAttributes(lp);
+                })
                 .onSubmit(new MultiSelectDialog.SubmitCallbackListener() {
                     @Override
                     public void onSelected(ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String commonSeparatedData) {
