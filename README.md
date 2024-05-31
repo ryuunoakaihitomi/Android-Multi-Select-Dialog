@@ -33,7 +33,7 @@ Setup
 2. **Add the dependency**
 ```gradle
 	dependencies {
-      		 compile 'com.abdeveloper:multi-select-dialog-v21:zqy_mod_1.0.0'
+      		 compile 'com.abdeveloper:multi-select-dialog-v21:zqy_mod_1.0.1'
 	}
 ```
 
