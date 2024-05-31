@@ -27,9 +27,9 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
     //Default Values
     private String title;
     private float titleSize = 25;
-    private String positiveText = "DONE";
-    private String negativeText = "CANCEL";
-    private String neutralText = "NEUTRAL";
+    private String positiveText;
+    private String negativeText;
+    private String neutralText;
     private TextView dialogTitle, dialogSubmit, dialogCancel, dialogNeutral;
     private ArrayList<Integer> previouslySelectedIdsList = new ArrayList<>();
 
@@ -71,7 +71,9 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
 
         dialogSubmit.setOnClickListener(this);
         dialogCancel.setOnClickListener(this);
-        dialogNeutral.setOnClickListener(this);
+        if (neutralText != null) {
+            dialogNeutral.setOnClickListener(this);
+        }
 
         settingValues();
 
@@ -107,6 +109,13 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
         return this;
     }
 
+    /**
+     * If the text is not set, the neutral button will not be enabled,
+     * {@link SubmitCallbackListener#onNeutral(ArrayList, ArrayList, String)} will not be called
+     *
+     * @param message the message
+     * @return this object
+     */
     public MultiSelectDialog neutralText(@NonNull String message) {
         this.neutralText = message;
         return this;
@@ -166,6 +175,12 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
     private void settingValues() {
         dialogTitle.setText(title);
         dialogTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleSize);
+        if (positiveText == null) {
+            positiveText = getString(android.R.string.ok);
+        }
+        if (negativeText == null) {
+            negativeText = getString(android.R.string.cancel);
+        }
         dialogSubmit.setText(positiveText);
         dialogNeutral.setText(neutralText);
         dialogCancel.setText(negativeText);
@@ -329,6 +344,7 @@ public class MultiSelectDialog extends AppCompatDialogFragment implements Search
          * Like {@link #onSelected(ArrayList, ArrayList, String)}, but don't check the range
          * <p>
          * {@link #setMinSelectionLimit(int)} and {@link #setMaxSelectionLimit(int)} has no effect in this case
+         * @see #neutralText(String)
          */
         void onNeutral(ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String commonSeparatedData);
         void onCancel();
