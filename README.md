@@ -18,14 +18,14 @@ Setup
 --------
 
 
-1. **Add the JitPack repository to your build file**
+1. **Add the Maven repository to your build file**
 
  Add it in your root build.gradle at the end of repositories:
 ```gradle
 	allprojects {
 		repositories {
 			...
-			maven { url 'https://jitpack.io' }
+			maven { url 'https://raw.githubusercontent.com/ryuunoakaihitomi/maven-repository/master' }
 		}
 	}
 ```
@@ -33,7 +33,7 @@ Setup
 2. **Add the dependency**
 ```gradle
 	dependencies {
-      		 compile 'com.github.abumoallim:Android-Multi-Select-Dialog:v1.9'
+      		 compile 'com.abdeveloper:multi-select-dialog-v21:zqy_mod_1.0.0'
 	}
 ```
 
