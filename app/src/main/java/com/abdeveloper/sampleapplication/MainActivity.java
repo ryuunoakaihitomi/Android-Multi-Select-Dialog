@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     lp.width = (int) (dm.widthPixels * 0.75);
                     w.setAttributes(lp);
                 })
+                .dismissListener($ -> Log.d(TAG, "onCreate: dialog dismiss"))
                 .onSubmit(new MultiSelectDialog.SubmitCallbackListener() {
                     @Override
                     public void onSelected(ArrayList<Integer> selectedIds, ArrayList<String> selectedNames, String commonSeparatedData) {

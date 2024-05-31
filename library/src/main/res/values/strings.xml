@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Library</string>
     <string name="dialog_done_text">@android:string/ok</string>
     <string name="dialog_cancel_text">@android:string/cancel</string>
     <string name="dialog_neutral_text">NEUTRAL</string>
